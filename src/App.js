@@ -9,6 +9,7 @@ import LeftPanel from './components/LeftPanel';
 import RightPanel from './components/RightPanel';
 import MainContainer from './components/MainContainer';
 import Header from './components/Header';
+import Footer from './components/Footer';
 
 const { Search } = Input;
 
@@ -48,6 +49,7 @@ function App() {
           <RightPanel />
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
