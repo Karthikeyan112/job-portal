@@ -1,0 +1,38 @@
+.job {
+  flex-basis: 400px;
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column;
+  h3 {
+    color: #3c495a;
+  }
+
+  &__catagory {
+    margin-top: 40px;
+  }
+  &__heading {
+    color: #3c495a;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  hr {
+    border: 1px solid #ccc;
+  }
+
+  &__details {
+    margin-top: 20px;
+  }
+  &__role {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__item {
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  &__desc {
+    font-size: 12px;
+    width: 85%;
+  }
+}

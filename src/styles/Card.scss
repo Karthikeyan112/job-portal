@@ -1,0 +1,24 @@
+.card {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.1);
+
+  &__image {
+    width: 80px;
+    object-fit: contain;
+  }
+  &__heading {
+    margin-top: 10px;
+    font-size: 18px;
+  }
+  &__pay {
+    font-size: 12px;
+  }
+  &__btn {
+    padding: 0 30px;
+    margin-bottom: 10px;
+  }
+}

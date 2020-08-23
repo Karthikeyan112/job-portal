@@ -1,0 +1,32 @@
+.app {
+  &__main {
+    display: flex;
+  }
+  &__search {
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
+}
+
+.app__container {
+  padding: 30px 150px;
+  background-color: #F8F8F8;
+}
+
+.ant-input-wrapper {
+  box-shadow: 0 2px 10px rgba(0,0,0 ,0.3);
+  border-radius: 5px;
+  overflow: hidden;
+
+  .ant-btn {
+    width: 100px;
+  }
+  .ant-input {
+    padding: 5px 20px;
+    outline: none;
+  }
+
+  .ant-btn, .ant-input {
+    height: 50px;
+  }
+}

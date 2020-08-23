@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  padding: 20px 200px;
+  border-bottom: 1px solid #ccc;
+  align-items: flex-end;
+  line-height: 1;
+
+  &__title {
+    font-weight: 600;
+    margin-right: auto;
+    font-size: 18px;
+    line-height: 1;
+  }
+  &__list {
+    display: flex;
+  }
+  &__item {
+    text-transform: uppercase;
+    padding: 0 10px;
+    font-weight: 300;
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,19 @@
+.filter {
+  flex-basis: 400px;
+  margin-right: 30px;
+  &__checkbox {
+    display: flex;
+    flex-direction: column;
+  }
+  * {
+    color: #3c495a;
+  }
+}
+.bottom-brder {
+  border-bottom: 1px solid #ccc;
+}
+.filter__header {
+  display: flex;
+  margin: 30px 0 0 0;
+  justify-content: space-between;
+}
