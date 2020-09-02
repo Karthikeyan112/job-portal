@@ -4,6 +4,10 @@
   border-bottom: 1px solid #ccc;
   align-items: flex-end;
   line-height: 1;
+  // position: sticky;
+  // top: 0;
+  // z-index: 100;
+  background-color: #fff;
 
   &__title {
     font-weight: 600;

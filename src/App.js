@@ -15,6 +15,7 @@ const { Search } = Input;
 
 function App() {
   const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   const [skills, setSkills] = useState([]);
   useEffect(() => {
     async function fetchData() {
@@ -23,12 +24,44 @@ function App() {
       const skillSet = new Set(allSkills);
       setSkills(Array.from(skillSet));
       setData(result.data);
+      setFilteredData(result.data);
     }
     fetchData();
   }, []);
   const getSkills = (items) => {
     const allSkills = items && items.reduce((acc, item) => [...acc, ...item.skills], []);
     return allSkills;
+  }
+
+  const filterSingleton = (actual, filter) => {
+    if (!filter) {
+      return true;
+    }
+    const [firstActual] = actual.split(' ');
+    const [firstFilter] = filter.split(' ');
+    return firstActual.toLowerCase() === firstFilter.toLowerCase();
+  }
+  const filterArray = (list, allItems) => {
+    if(!allItems.length) {
+      return true;
+    }
+    return list.some(item => allItems.includes(item));
+  }
+  const filterItems = (filterObject) => {
+    let newList = data;
+    console.log(filterObject);
+    const { countries,
+      jobType,
+      languages,
+      maxPayRate,
+      minPayRate,
+      skills } = filterObject;
+
+    newList = newList.filter(item => filterArray(item.skills, skills))
+      .filter(item => filterArray(item.languages, languages))
+      .filter(item => filterSingleton(item.mode, jobType));
+
+    setFilteredData(newList);
   }
 
   return (
@@ -44,8 +77,8 @@ function App() {
           />
         </div>
         <div className="app__main">
-          <LeftPanel skills={skills} />
-          <MainContainer data={data} />
+          <LeftPanel skills={skills} filterItems={filterItems} />
+          <MainContainer data={filteredData} />
           <RightPanel />
         </div>
       </div>

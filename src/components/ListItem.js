@@ -40,7 +40,7 @@ const ListItem = ({item}) => {
         <span className="listItem__place">{location}</span>
       </div>
       <div className="listItem__reply">
-        <p>Reply rate: <span className="listItem__bold">{replyRate  }</span></p>
+        <p>Reply rate: <span className="listItem__bold">{ replyRate  }</span></p>
       </div>
       <div className="listItem__description">
         <p>{description}</p>

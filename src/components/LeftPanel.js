@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Checkbox, Input, Select, Slider, Button } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 
 const { Option } = Select;
 
-const LeftPanel = ({ skills }) => {
-  const experienceLevel = ['Beginer(1-3yrs)', 'intermediate(3-5yrs)', 'Expert(5+yrs)'];
+const LeftPanel = ({ skills, filterItems }) => {
+  const experienceLevel = ['Beginer (1-3yrs)', 'intermediate (3-5yrs)', 'Expert (5+yrs)'];
   const allCountries = ['india', 'USA', 'UK', 'France'];
   const allLanguages = ['English', 'French', 'Tamil']
   const allOptions = ['Hourly', 'Part-time (20hrs/wk)', 'Full-time (40hrs/wk)'];
@@ -19,7 +19,27 @@ const LeftPanel = ({ skills }) => {
   const [minPayRate, setMinPayRate] = useState(18);
   const [maxPayRate, setMaxPayRate] = useState(32);
 
-
+  useEffect(() => {
+    filterItems({
+      availability,
+      countries,
+      expLevel,
+      jobType,
+      languages,
+      maxPayRate,
+      minPayRate,
+      skills: selectedSkills
+    });
+  }, [
+      availability,
+      countries,
+      expLevel,
+      jobType,
+      languages,
+      maxPayRate,
+      minPayRate,
+      selectedSkills
+  ]);
   const handlePayRateChange = (value) => {
     setMinPayRate(value[0]);
     setMaxPayRate(value[1]);
@@ -40,6 +60,32 @@ const LeftPanel = ({ skills }) => {
     setLanguages([]);
   };
 
+
+  const handleSkillsChange = (skills) => {
+    setSelectedSkills(skills);
+    // filterItems('skills', skills)
+  }
+
+  const handleAvailabilityChange = (availability) => {
+    setAvailability(availability);
+  }
+  
+  const handleJobTypeChnange = (jobType) => {
+    setJobType(jobType);
+  }
+
+  const handleExpLevelChange = (expLevel) => {
+    setExpLevel(expLevel);
+  }
+
+  const handleCountriesChange = (countries) => {
+    setCountries(countries);
+  }
+
+  const handleLanguagesChange = (languages) => {
+    setLanguages(languages);
+  }
+
   return (
     <div className="filter">
       <div className="filter__header bottom-brder">
@@ -48,32 +94,32 @@ const LeftPanel = ({ skills }) => {
       </div>
       <div className="filter__header">
         <h3>Skills</h3>
-        <Button className="filter__clear" type="link" size="small" onClick={() => setSelectedSkills([])}>Clear</Button>
+        <Button className="filter__clear" type="link" size="small" onClick={() => handleSkillsChange([])}>Clear</Button>
       </div>
       <Select
         mode="multiple"
         style={{ width: '100%' }}
         placeholder="Please select"
         value={selectedSkills}
-        onChange={(value) => setSelectedSkills(value)}
+        onChange={(value) => handleSkillsChange(value)}
       >
         {skills && skills.map(skill => <Option key={skill}>{skill}</Option>)}
       </Select>
 
       <div className="filter__header">
         <h3>Availability <ExclamationCircleOutlined /></h3>
-        <Button className="filter__clear" type="link" size="small" onClick={() => setAvailability([])}>Clear</Button>
+        <Button className="filter__clear" type="link" size="small" onClick={() => handleAvailabilityChange([])}>Clear</Button>
       </div>
-      <Checkbox.Group className="filter__checkbox" options={allOptions} value={availability} onChange={(value) => setAvailability(value)} />
+      <Checkbox.Group className="filter__checkbox" options={allOptions} value={availability} onChange={(value) => handleAvailabilityChange(value)} />
       <div className="filter__header">
         <h3>Job Type <ExclamationCircleOutlined /></h3>
-        <Button className="filter__clear" type="link" size="small" onClick={() => setJobType('')}>Clear</Button>
+        <Button className="filter__clear" type="link" size="small" onClick={() => handleJobTypeChnange('')}>Clear</Button>
       </div>
       <Select
         style={{ width: '100%' }}
         placeholder="Please select"
         value={jobType}
-        onChange={(value) => setJobType(value)}
+        onChange={(value) => handleJobTypeChnange(value)}
       >
         {allOptions.map(option => <Option key={option}>{option}</Option>)}
       </Select>
@@ -97,39 +143,39 @@ const LeftPanel = ({ skills }) => {
       />
       <div className="filter__header">
         <h3>Experience level</h3>
-        <Button className="filter__clear" type="link" size="small" onClick={() => setExpLevel('')}>Clear</Button>
+        <Button className="filter__clear" type="link" size="small" onClick={() => handleExpLevelChange('')}>Clear</Button>
       </div>
       <Select
         style={{ width: '100%' }}
         placeholder="Please select"
         value={expLevel}
-        onChange={(value) => setExpLevel(value)}
+        onChange={(value) => handleExpLevelChange(value)}
       >
         {experienceLevel.map(explevel => <Option key={explevel}>{explevel}</Option>)}
       </Select>
       <div className="filter__header">
         <h3>Countries</h3>
-        <Button className="filter__clear" type="link" size="small" onClick={() => setCountries([])}>Clear</Button>
+        <Button className="filter__clear" type="link" size="small" onClick={() => handleCountriesChange([])}>Clear</Button>
       </div>
       <Select
         mode="multiple"
         style={{ width: '100%' }}
         placeholder="Please select"
         value={countries}
-        onChange={(value) => setCountries(value)}
+        onChange={(value) => handleCountriesChange(value)}
         >
         {allCountries.map(country => <Option key={country}>{country}</Option>)}
       </Select>
       <div className="filter__header">
         <h3>Languages</h3>
-        <Button className="filter__clear" type="link" size="small" onClick={() => setLanguages([])}>Clear</Button>
+        <Button className="filter__clear" type="link" size="small" onClick={() => handleLanguagesChange([])}>Clear</Button>
       </div>
       <Select
         mode="multiple"
         style={{ width: '100%' }}
         placeholder="Please select"
         value={languages}
-        onChange={(value) => setLanguages(value)}
+        onChange={(value) => handleLanguagesChange(value)}
       >
         {allLanguages.map(language => <Option key={language}>{language}</Option>)}
       </Select>
