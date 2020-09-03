@@ -65,9 +65,18 @@ function App() {
     }
     return list.some(item => allItems.includes(item));
   }
+  const filterByCountries = (country, listOfCountries) => {
+    if (!listOfCountries.length) {
+      return true;
+    }
+    console.log(listOfCountries, country);
+    return listOfCountries.includes(country); 
+  }
+
   const filterItems = (filterObject) => {
     let newList = data;
     const {
+      countries,
       expLevel,
       jobType,
       languages,
@@ -79,6 +88,7 @@ function App() {
       .filter(item => filterByPayRate(minPayRate, maxPayRate,item.price))
       .filter(item => filterArray(item.languages, languages))
       .filter(item => filterSingleton(item.mode, jobType))
+      .filter(item => filterByCountries(item.location, countries))
       .filter(item => filterSingleton(item.level, expLevel));
     
     setFilteredData(newList);
@@ -101,7 +111,12 @@ function App() {
           <LeftPanel skills={skills} filterItems={filterItems} />
           <div className="main">
             <MainContainer data={paginatedData} />
-            <Pagination pageSize={5} total={filteredData.length} onChange={handlePagination} />
+            <Pagination
+              pageSize={5}
+              total={filteredData.length}
+              onChange={handlePagination}
+              hideOnSinglePage={true}
+            />
           </div>
           <RightPanel />
         </div>
