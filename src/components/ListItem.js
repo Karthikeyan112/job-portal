@@ -21,7 +21,7 @@ const ListItem = ({item}) => {
     case 'part-time': 
       color = '#f5ad41';
       break;
-    case 'hourly':
+    default: 
       color = '#56d48f';
       break;
   }
@@ -32,7 +32,7 @@ const ListItem = ({item}) => {
         <h3 className="listItem__role">{position}</h3>
         <Tag className="listItem__roleTag" color={color }>{mode}</Tag>
         <div className="listItem__rate">
-          <h3>{price}</h3>
+          <h3>${price}/hr</h3>
         </div>
       </div>
       <div className="listItem__company">
@@ -40,7 +40,7 @@ const ListItem = ({item}) => {
         <span className="listItem__place">{location}</span>
       </div>
       <div className="listItem__reply">
-        <p>Reply rate: <span className="listItem__bold">{replyRate  }</span></p>
+        <p>Reply rate: <span className="listItem__bold">{ replyRate  }</span></p>
       </div>
       <div className="listItem__description">
         <p>{description}</p>
