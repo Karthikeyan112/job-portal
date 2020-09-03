@@ -3,7 +3,7 @@ import axios from 'axios';
 import 'antd/dist/antd.css';
 import './App.scss';
 import './styles/style.scss';
-import { Input } from 'antd';
+import { Input, Pagination } from 'antd';
 
 import LeftPanel from './components/LeftPanel';
 import RightPanel from './components/RightPanel';
@@ -16,7 +16,9 @@ const { Search } = Input;
 function App() {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  const [paginatedData, setPaginatedData] = useState([]);
   const [skills, setSkills] = useState([]);
+
   useEffect(() => {
     async function fetchData() {
       const result = await axios('data.json');
@@ -25,6 +27,7 @@ function App() {
       setSkills(Array.from(skillSet));
       setData(result.data);
       setFilteredData(result.data);
+      setPaginatedData(result.data.slice(0,5))
     }
     fetchData();
   }, []);
@@ -39,6 +42,13 @@ function App() {
       return actual >= minVal;
     }
     return actual >= minVal && actual <= maxVal;
+  }
+
+  const handlePagination = (page, pageSize) => {
+    console.log(page, pageSize);
+    const start = (page - 1) * pageSize;
+    const end = page * pageSize;
+    setPaginatedData(filteredData.slice(start, end))
   }
 
   const filterSingleton = (actual, filter) => {
@@ -72,6 +82,7 @@ function App() {
       .filter(item => filterSingleton(item.level, expLevel));
     
     setFilteredData(newList);
+    setPaginatedData(newList.slice(0, 5))
   }
 
   return (
@@ -88,7 +99,10 @@ function App() {
         </div>
         <div className="app__main">
           <LeftPanel skills={skills} filterItems={filterItems} />
-          <MainContainer data={filteredData} />
+          <div className="main">
+            <MainContainer data={paginatedData} />
+            <Pagination pageSize={5} total={filteredData.length} onChange={handlePagination} />
+          </div>
           <RightPanel />
         </div>
       </div>

@@ -19,7 +19,6 @@ const MainContainer = ({data}) => {
       </div>
       </div>
       {data && data.map(item => <ListItem key={item.id} item={item}/>)}
-      
     </div>
   )
 }

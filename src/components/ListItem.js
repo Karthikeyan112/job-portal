@@ -21,7 +21,7 @@ const ListItem = ({item}) => {
     case 'part-time': 
       color = '#f5ad41';
       break;
-    case 'hourly':
+    default: 
       color = '#56d48f';
       break;
   }

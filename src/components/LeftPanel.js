@@ -23,7 +23,7 @@ const LeftPanel = ({ skills, filterItems }) => {
     setSelectedSkills(['UI', 'JavaScript', 'React', 'Photoshop']);
     setLanguages(['English']);
     setAvailability(allOptions);
-  },[]);
+  }, []);
 
   useEffect(() => {
     filterItems({
