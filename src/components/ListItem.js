@@ -32,7 +32,7 @@ const ListItem = ({item}) => {
         <h3 className="listItem__role">{position}</h3>
         <Tag className="listItem__roleTag" color={color }>{mode}</Tag>
         <div className="listItem__rate">
-          <h3>{price}</h3>
+          <h3>${price}/hr</h3>
         </div>
       </div>
       <div className="listItem__company">

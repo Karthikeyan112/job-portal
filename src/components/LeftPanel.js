@@ -6,18 +6,24 @@ const { Option } = Select;
 
 const LeftPanel = ({ skills, filterItems }) => {
   const experienceLevel = ['Beginer (1-3yrs)', 'intermediate (3-5yrs)', 'Expert (5+yrs)'];
-  const allCountries = ['india', 'USA', 'UK', 'France'];
+  const allCountries = ['Worldwide', 'USA Only', 'UK Only', 'Remote'];
   const allLanguages = ['English', 'French', 'Tamil']
   const allOptions = ['Hourly', 'Part-time (20hrs/wk)', 'Full-time (40hrs/wk)'];
 
-  const [selectedSkills, setSelectedSkills] = useState(['UI', 'JavaScript', 'React', 'Photoshop'])
-  const [availability, setAvailability] = useState(allOptions)
+  const [selectedSkills, setSelectedSkills] = useState([])
+  const [availability, setAvailability] = useState([])
   const [expLevel, setExpLevel] = useState('');
   const [countries, setCountries] = useState([]);
-  const [languages, setLanguages] = useState(['English']);
-  const [jobType, setJobType] = useState([]);
+  const [languages, setLanguages] = useState([]);
+  const [jobType, setJobType] = useState('');
   const [minPayRate, setMinPayRate] = useState(18);
   const [maxPayRate, setMaxPayRate] = useState(32);
+
+  useEffect(() => {
+    setSelectedSkills(['UI', 'JavaScript', 'React', 'Photoshop']);
+    setLanguages(['English']);
+    setAvailability(allOptions);
+  },[]);
 
   useEffect(() => {
     filterItems({
@@ -63,7 +69,6 @@ const LeftPanel = ({ skills, filterItems }) => {
 
   const handleSkillsChange = (skills) => {
     setSelectedSkills(skills);
-    // filterItems('skills', skills)
   }
 
   const handleAvailabilityChange = (availability) => {

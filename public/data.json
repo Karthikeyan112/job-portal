@@ -16,7 +16,7 @@
     "skills": ["HTML", "CSS", "JavaScript"],
     "languages": ["English", "French"],
     "tools": [],
-    "price": "$44/hr",
+    "price": 44,
     "mode": "hourly"
   },
   {
@@ -36,7 +36,7 @@
     "skills": ["HTML", "CSS", "JavaScript"],
     "languages": ["English", "French"],
     "tools": [],
-    "price": "$44/hr",
+    "price": 44,
     "mode": "hourly"
   },
   {
@@ -60,7 +60,7 @@
       "Tamil"
     ],
     "tools": [],
-    "price": "$20/hr",
+    "price": 20,
     "mode": "full-time"
   },
   {
@@ -81,7 +81,7 @@
       "Sass"],
     "languages": ["English"],
     "tools": [],
-    "price": "$44/hr",
+    "price": 44,
     "mode": "part-time"
   },
   {
@@ -103,7 +103,7 @@
       "English"
     ],
     "tools": [],
-    "price": "$44/hr",
+    "price": 44,
     "mode": "hourly"
   },
   {
@@ -126,7 +126,7 @@
       "English"
     ],
     "tools": [],
-    "price": "$38/hr",
+    "price": 38,
     "mode": "part-time"
   },
   {
@@ -148,7 +148,7 @@
       "English"
     ],
     "tools": [],
-    "price": "$40/hr",
+    "price": 40,
     "mode": "full-time"
   },
   {
@@ -170,7 +170,7 @@
       "English"
     ],
     "tools": [],
-    "price": "$15/hr",
+    "price": 15,
     "mode": "hourly"
   },
   {
@@ -193,7 +193,7 @@
       "English"
     ],
     "tools": [],
-    "price": "$25/hr",
+    "price": 25,
     "mode": "hourly"
   },
   {
@@ -215,7 +215,7 @@
       "English"
     ],
     "tools": [],
-    "price": "$50/hr",
+    "price": 50,
     "mode": "hourly"
   },
   {
@@ -237,7 +237,7 @@
       "English"
     ],
     "tools": [],
-    "price": "$40/hr",
+    "price": 40,
     "mode": "part-time"
   }
 ]

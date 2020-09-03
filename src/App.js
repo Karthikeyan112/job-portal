@@ -33,6 +33,14 @@ function App() {
     return allSkills;
   }
 
+  const filterByPayRate = (minVal, maxVal, actual) => {
+    console.log(minVal, maxVal, actual);
+    if(maxVal === 40) {
+      return actual >= minVal;
+    }
+    return actual >= minVal && actual <= maxVal;
+  }
+
   const filterSingleton = (actual, filter) => {
     if (!filter) {
       return true;
@@ -49,8 +57,8 @@ function App() {
   }
   const filterItems = (filterObject) => {
     let newList = data;
-    console.log(filterObject);
-    const { countries,
+    const {
+      expLevel,
       jobType,
       languages,
       maxPayRate,
@@ -58,9 +66,11 @@ function App() {
       skills } = filterObject;
 
     newList = newList.filter(item => filterArray(item.skills, skills))
+      .filter(item => filterByPayRate(minPayRate, maxPayRate,item.price))
       .filter(item => filterArray(item.languages, languages))
-      .filter(item => filterSingleton(item.mode, jobType));
-
+      .filter(item => filterSingleton(item.mode, jobType))
+      .filter(item => filterSingleton(item.level, expLevel));
+    
     setFilteredData(newList);
   }
 
